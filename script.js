@@ -3,7 +3,8 @@ container.style.cssText =
   "margin: 1rem; display: flex; gap: 3px; justify-content: center; align-items: center;";
 
 const button = document.createElement("button");
-button.style.cssText = "margin: 1rem; padding: 1rem; cursor: pointer; border-radius: 1rem;";
+button.style.cssText =
+  "margin: 1rem; padding: 1rem; cursor: pointer; border-radius: 1rem;";
 button.textContent = "create grid";
 
 const main = document.querySelector("main");
@@ -44,7 +45,7 @@ function getNum() {
   }
 }
 
-function drawGrid(num = 16) {
+function drawGrid(num = 32) {
   let i = 0;
   let j = 0;
 
@@ -77,7 +78,13 @@ function fillGridItem() {
 
   gridItems.forEach((item) =>
     item.addEventListener("mouseover", (event) => {
-      event.currentTarget.style.backgroundColor = "black";
+      const randomRgb = `rgb(
+            ${Math.floor(Math.random() * 255)}, 
+            ${Math.floor(Math.random() * 255)}, 
+            ${Math.floor(Math.random() * 255)}
+            )`;
+
+      event.currentTarget.style.backgroundColor = randomRgb;
     })
   );
 }
