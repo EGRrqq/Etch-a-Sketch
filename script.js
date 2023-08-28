@@ -1,8 +1,9 @@
 const container = document.querySelector(".container");
 container.style.cssText =
-  "margin: 1rem; display: flex; gap: 5px; justify-content: center; align-items: center;";
+  "margin: 1rem; display: flex; gap: 3px; justify-content: center; align-items: center;";
 
 const button = document.createElement("button");
+button.style.cssText = "margin: 1rem; padding: 1rem; cursor: pointer; border-radius: 1rem;";
 button.textContent = "create grid";
 
 const main = document.querySelector("main");
@@ -14,15 +15,12 @@ main.prepend(button);
   newGrid();
 })();
 
-// newGrid()
-// - drawGrid()
-// - cleanGrid()
-// - drawGrid(getNum())
-
 function newGrid() {
   button.addEventListener("click", () => {
     const num = getNum();
 
+    // if num === false, it means that the user click on cancel button
+    // so it is necessary to keep the previous grid
     if (num) {
       cleanGrid();
       drawGrid(num);
@@ -55,13 +53,13 @@ function drawGrid(num = 16) {
   while (i < num) {
     const gridRow = document.createElement("div");
     gridRow.classList.add("gridRow");
-    gridRow.style.cssText = "display: flex; flex-direction: column; gap: 5px;";
+    gridRow.style.cssText = "display: flex; flex-direction: column; gap: 3px;";
 
     while (j < num) {
       const gridItem = document.createElement("div");
       gridItem.classList.add("gridItem");
       gridItem.style.cssText =
-        "width: 25px; height: 25px; border: 1px solid black;";
+        "width: 15px; height: 15px; border: 1px solid black;";
 
       gridRow.appendChild(gridItem);
       container.appendChild(gridRow);
